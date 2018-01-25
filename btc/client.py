@@ -1,24 +1,32 @@
 import requests
 
-
 BASE_URL = "https://btc-trade.com.ua/api/"
 
 
 class Client(object):
-
-    def get_deals(self):
+    def __init__(self):
         pass
 
-    def get_trades_sell(self):
-        pass
+    def get_deals(self, pair):
+        url = BASE_URL + 'deals/{0}'.format(pair)
+        response = requests.get(url)
+        return response.json()
 
-    def get_trades_buy(self):
-        pass
+    def get_trades_sell(self, pair):
+        url = BASE_URL + 'trades/sell/{0}'.format(pair)
+        response = requests.get(url)
+        return response.json()
 
-    def get_japan_stat(self):
-        pass
+    def get_trades_buy(self, pair):
+        url = BASE_URL + 'trades/buy/{0}'.format(pair)
+        response = requests.get(url)
+        return response.json()
 
-    #Privat api
+    def get_japan_stat(self, pair):
+        url = BASE_URL + 'japan_stat/high/{0}'.format(pair)
+        response = requests.get(url)
+        return response.json()
+
     def auth_request(self):
         pass
 
@@ -45,4 +53,3 @@ class Client(object):
 
     def bid_coin(self):
         pass
-
